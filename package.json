@@ -1,6 +1,6 @@
 {
   "name": "companion-module-glensound-gtmmobile",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "GlenSound GTM Mobile - mute/unmute control via UDP",
   "main": "src/main.js",
   "scripts": {
