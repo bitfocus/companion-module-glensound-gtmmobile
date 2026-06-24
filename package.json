@@ -24,6 +24,6 @@
     "node": "^22.20",
     "yarn": "^4"
   },
-  "packageManager": "yarn@4.9.1",
+  "packageManager": "yarn@4.13.0",
   "prettier": "@companion-module/tools/.prettierrc.json"
 }
