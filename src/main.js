@@ -162,7 +162,7 @@ class GlenSoundGTMMobile extends InstanceBase {
 		})
 			this.udpStatus.on('message', (msg, rinfo) => this.onStatusMessage(msg, rinfo))
 
-			this.udpStatus.bind(STATUS_MULTICAST_PORT, STATUS_MULTICAST_GROUP, () => {
+			this.udpStatus.bind(STATUS_MULTICAST_PORT, '0.0.0.0', () => {
 				if (!this.udpStatus) return
 				const configured = this.config?.multicastInterface
 				const iface = configured || findInterfaceForDevice(this.config.host)
