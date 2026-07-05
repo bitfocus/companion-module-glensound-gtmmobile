@@ -73,6 +73,7 @@ class GlenSoundGTMMobile extends InstanceBase {
 		this.udpCmd         = null
 		this.udpStatus      = null
 		this.pollTimer      = null
+    this.volumePollTimer = null
 		this.noResponseTimer = null
 		this.membershipAdded = false
 	}
@@ -176,6 +177,7 @@ class GlenSoundGTMMobile extends InstanceBase {
 					this.sendCmd(PKT_GET_STATUS)
 					this.sendCmd(PKT_GET_REPORT_VOLUME)
 					this.pollTimer = setInterval(() => this.sendCmd(PKT_GET_STATUS), 500)
+      this.volumePollTimer = setInterval(() => this.sendCmd(PKT_GET_REPORT_VOLUME), 5000)
 					this.resetTimeout()
 				} catch (err) {
 					this.log('error', `Multicast join failed: ${err.message}`)
@@ -192,6 +194,7 @@ class GlenSoundGTMMobile extends InstanceBase {
 	closeSockets() {
 		return new Promise((resolve) => {
 			if (this.pollTimer) { clearInterval(this.pollTimer); this.pollTimer = null }
+      if (this.volumePollTimer) { clearInterval(this.volumePollTimer); this.volumePollTimer = null }
 			if (this.noResponseTimer) { clearTimeout(this.noResponseTimer); this.noResponseTimer = null
 		this.membershipAdded = false }
 			let pending = 0
